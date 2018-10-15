@@ -1,0 +1,44 @@
+---
+title: "Homework 5"
+author: "Jae Hoon Cho"
+date: "October 13, 2018"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Question 1 
+Modify your function from the Problem 2 (Lab5 Activity). The function should simulate N rounds of the game (instead of just one) and return the proportion of times you win the bet. Run the function with N = 1000 and 10000.
+
+```{r}
+dice_game <- function () {
+  result <- sample (1:6, 4, replace=T)
+  ifelse (result[1]==6|result[2]==6|result[3]==6|result[4]==6, return(1), return(0))} 
+
+dice_prob <- function(B) {
+sum(replicate (B, dice_game()))/B}
+
+dice_prob(1000)
+dice_prob(10000)
+```
+
+# Question 2
+Write a function that will find the smallest element of a given vector (built-in min() is not allowed). Your function should return the smallest element and index of the smallest element.
+Ex. vector is (1, 4, 2, 0, 5), then the smallest element - 0 and index is 4.
+
+```{r}
+x=c(3,4,5,6,7,3)
+
+
+findMin <- function(x) {for (i in 1:length(x)){
+  if(sum(x[i]<=x)!=length(x)){
+    next
+  }
+  print (paste("minimum number is",x[i]))
+  print (paste("its sequence",i))
+}}
+
+findMin(x)
+```
